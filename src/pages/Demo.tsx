@@ -85,10 +85,7 @@ const Demo = () => {
             <h1 className="text-xl font-semibold">Smart Crop Analysis</h1>
           </div>
           
-          <LanguageSwitcher 
-            currentLanguage={currentLanguage}
-            onLanguageChange={setCurrentLanguage}
-          />
+          <LanguageSwitcher />
         </div>
       </header>
 
@@ -103,7 +100,6 @@ const Demo = () => {
         ) : (
           <CropDemoForm 
             onSubmit={handleFormSubmit}
-            currentLanguage={currentLanguage}
           />
         )}
       </main>

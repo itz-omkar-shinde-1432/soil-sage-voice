@@ -27,10 +27,7 @@ const Index = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            <LanguageSwitcher 
-              currentLanguage={currentLanguage}
-              onLanguageChange={handleLanguageChange}
-            />
+            <LanguageSwitcher />
             <Button 
               variant="ghost" 
               size="sm" 

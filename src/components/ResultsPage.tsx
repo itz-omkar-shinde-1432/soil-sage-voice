@@ -1,13 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, CheckCircle, TrendingUp, Droplets, Calculator } from "lucide-react";
-import { useTranslation } from "./LanguageSwitcher";
 
 interface ResultsPageProps {
   results: AnalysisResults;
-  currentLanguage: string;
   onNewAnalysis: () => void;
   className?: string;
 }
@@ -34,13 +33,12 @@ interface AnalysisResults {
   preventive: string[];
 }
 
-export const ResultsPage: React.FC<ResultsPageProps> = ({
-  results,
-  currentLanguage,
+export const ResultsPage: React.FC<ResultsPageProps> = ({ 
+  results, 
   onNewAnalysis,
-  className
+  className 
 }) => {
-  const { t } = useTranslation(currentLanguage);
+  const { t } = useTranslation();
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {

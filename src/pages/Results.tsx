@@ -67,10 +67,7 @@ const Results = () => {
               <Share className="h-4 w-4 mr-2" />
               Share
             </Button>
-            <LanguageSwitcher 
-              currentLanguage={currentLanguage}
-              onLanguageChange={setCurrentLanguage}
-            />
+            <LanguageSwitcher />
           </div>
         </div>
       </header>
@@ -79,7 +76,6 @@ const Results = () => {
       <main className="container mx-auto px-4 py-8">
         <ResultsPage 
           results={analysisData}
-          currentLanguage={currentLanguage}
           onNewAnalysis={handleNewAnalysis}
         />
       </main>

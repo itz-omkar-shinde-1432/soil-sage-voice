@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -6,11 +7,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Upload, Camera, MapPin, Wheat } from "lucide-react";
 import { VoiceRecorder } from "./VoiceRecorder";
-import { useTranslation } from "./LanguageSwitcher";
 
 interface CropDemoFormProps {
   onSubmit: (data: FormData) => void;
-  currentLanguage: string;
   className?: string;
 }
 
@@ -32,10 +31,9 @@ const locations = [
 
 export const CropDemoForm: React.FC<CropDemoFormProps> = ({
   onSubmit,
-  currentLanguage,
   className
 }) => {
-  const { t } = useTranslation(currentLanguage);
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     image: null,
     location: '',
@@ -162,7 +160,7 @@ export const CropDemoForm: React.FC<CropDemoFormProps> = ({
             <div className="space-y-3">
               <VoiceRecorder 
                 onTranscript={handleVoiceTranscript}
-                currentLanguage={currentLanguage}
+                currentLanguage={`${i18n.language}-${i18n.language === 'en' ? 'US' : 'IN'}`}
               />
               <Input
                 placeholder="Or type symptoms here..."

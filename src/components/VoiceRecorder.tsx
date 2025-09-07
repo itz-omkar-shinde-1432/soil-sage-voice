@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { Mic, MicOff, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -16,6 +17,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
   currentLanguage = 'en-US',
   className
 }) => {
+  const { t } = useTranslation();
   const [isRecording, setIsRecording] = useState(false);
   const [isSupported, setIsSupported] = useState(false);
   const recognitionRef = useRef<any>(null);
@@ -63,8 +65,14 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
 
   const speak = (text: string) => {
     if ('speechSynthesis' in window) {
+      // Stop any ongoing speech
+      speechSynthesis.cancel();
+      
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = currentLanguage;
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+      
       speechSynthesis.speak(utterance);
     }
   };
@@ -73,7 +81,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
     return (
       <div className={cn("text-center p-4 bg-muted rounded-lg", className)}>
         <p className="text-sm text-muted-foreground">
-          Voice features are not supported in this browser
+          {t('voice.notSupported')}
         </p>
       </div>
     );
@@ -93,12 +101,12 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
         {isRecording ? (
           <>
             <MicOff className="mr-2 h-5 w-5" />
-            Stop Recording
+            {t('voice.stop')}
           </>
         ) : (
           <>
             <Mic className="mr-2 h-5 w-5" />
-            Start Voice
+            {t('voice.start')}
           </>
         )}
       </Button>
@@ -106,11 +114,11 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
       <Button
         variant="outline"
         size="lg"
-        onClick={() => speak("Welcome to Smart Crop Advisory. How can I help you today?")}
+        onClick={() => speak(t('voice.testMessage'))}
         className="min-w-[120px]"
       >
         <Volume2 className="mr-2 h-4 w-4" />
-        Test Voice
+        {t('voice.test')}
       </Button>
     </div>
   );
