@@ -201,4 +201,4 @@ This is a Smart India Hackathon project focused on empowering small farmers with
 
 ## 📄 License
 
-Built for SIH 2024 - Smart Crop Advisory for Rural Development
+Built for SIH 2025 - Smart Crop Advisory for Rural Development
