@@ -1,73 +1,204 @@
-# Welcome to your Lovable project
+# Smart Crop Advisory System
 
-## Project info
+> AI-powered farming guidance for small and marginal farmers with voice-first multilingual interface
 
-**URL**: https://lovable.dev/projects/e236dd60-6bea-4d01-ae64-ca1d13eb807f
+## 🌾 Project Overview
 
-## How can I edit this code?
+The Smart Crop Advisory System is a comprehensive agricultural platform designed to empower small and marginal farmers with:
 
-There are several ways of editing your application.
+- **AI Disease Detection**: Advanced image recognition for instant crop disease identification
+- **Voice-First Interface**: Multilingual voice support in English, Hindi, and Marathi
+- **Expert Advisory**: Personalized farming guidance and treatment recommendations
+- **Market Intelligence**: Real-time crop prices and market forecasts
+- **Progressive Web App**: Offline-capable mobile-first design
 
-**Use Lovable**
+## 🚀 Quick Start
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e236dd60-6bea-4d01-ae64-ca1d13eb807f) and start prompting.
+```bash
+# Install dependencies
+npm install
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+## 🏗️ System Architecture
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Frontend Stack
+- **React 18** with TypeScript
+- **TailwindCSS** with custom agricultural design system
+- **shadcn/ui** components with custom variants
+- **Web Speech API** for voice recognition and synthesis
+- **React Router** for navigation
+- **TanStack Query** for data fetching
 
-**Use GitHub Codespaces**
+### Key Features Implemented
+- 🎤 **Voice Recording**: Multi-language speech-to-text
+- 📸 **Image Upload**: Drag-and-drop crop image analysis
+- 🌍 **Internationalization**: English, Hindi, Marathi support
+- 📱 **Responsive Design**: Mobile-first PWA architecture
+- 🎨 **Design System**: Earth-tone agricultural theme
+- 🔊 **Text-to-Speech**: Accessibility-focused voice output
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/           # Reusable UI components
+│   ├── ui/              # shadcn/ui base components
+│   ├── VoiceRecorder.tsx    # Voice input/output handler
+│   ├── LanguageSwitcher.tsx # Multi-language support
+│   ├── CropDemoForm.tsx     # Main analysis form
+│   ├── ResultsPage.tsx      # Analysis results display
+│   └── HeroSection.tsx      # Landing page hero
+├── pages/               # Route components
+│   ├── Index.tsx        # Landing page
+│   ├── Demo.tsx         # Analysis demo
+│   ├── Results.tsx      # Results display
+│   └── Admin.tsx        # Admin dashboard
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions
+└── assets/             # Images and static assets
+```
 
-This project is built with:
+## 🎨 Design System
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The application uses a comprehensive design system with:
 
-## How can I deploy this project?
+- **Colors**: Earth-inspired agricultural palette
+- **Typography**: Accessible font hierarchy
+- **Components**: Custom shadcn/ui variants
+- **Animations**: Smooth transitions and micro-interactions
+- **Voice States**: Visual feedback for recording/listening
 
-Simply open [Lovable](https://lovable.dev/projects/e236dd60-6bea-4d01-ae64-ca1d13eb807f) and click on Share -> Publish.
+### Color Palette
+- **Primary Green**: Agricultural trust and growth
+- **Earth Tones**: Natural browns and warm neutrals  
+- **Golden Accent**: Premium highlights and CTAs
+- **Status Colors**: Success, warning, and error states
 
-## Can I connect a custom domain to my Lovable project?
+## 🔧 Backend Architecture (Planned)
 
-Yes, you can!
+### Tech Stack
+- **Node.js + TypeScript** with Express/Fastify
+- **PostgreSQL** for user data and crop history
+- **Redis** for caching and real-time alerts
+- **Python FastAPI** ML microservice for disease detection
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### API Endpoints (Design)
+```
+POST /api/predict        # Image analysis
+POST /api/advice         # Crop advisory
+GET  /api/market         # Market prices  
+WS   /ws/alerts         # Real-time notifications
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### ML Microservice (Design)
+```python
+# Disease Detection Model
+POST /predict
+{
+  "image": "base64_encoded_image",
+  "crop_type": "tomato",
+  "location": "maharashtra"
+}
+
+# Response
+{
+  "disease": "leaf_blight",
+  "confidence": 0.92,
+  "treatment": {
+    "chemical": "Copper Hydroxide 77% WP",
+    "organic": "Neem Oil + Baking Soda",
+    "dosage": "2.5kg per acre"
+  }
+}
+```
+
+## 🌐 Deployment
+
+### Docker Setup (Planned)
+```yaml
+# docker-compose.yml
+services:
+  frontend:
+    build: ./frontend
+    ports: ["3000:3000"]
+  
+  backend:
+    build: ./backend  
+    ports: ["8000:8000"]
+    
+  ml-service:
+    build: ./ml-service
+    ports: ["8001:8001"]
+    
+  postgres:
+    image: postgres:15
+    
+  redis:
+    image: redis:7-alpine
+```
+
+## 🧪 Testing
+
+```bash
+# Unit tests
+npm run test
+
+# E2E tests  
+npm run test:e2e
+
+# Type checking
+npm run type-check
+```
+
+## 🌍 Internationalization
+
+The application supports:
+- **English (en-US)**: Default language
+- **Hindi (hi-IN)**: हिंदी interface
+- **Marathi (mr-IN)**: मराठी interface
+
+Voice recognition and synthesis work in all supported languages using the Web Speech API.
+
+## 📱 Progressive Web App
+
+Features:
+- **Offline Support**: Critical features work without internet
+- **Installation**: Add to home screen capability
+- **Push Notifications**: Weather and market alerts
+- **Background Sync**: Queue analysis requests when offline
+
+## 🚨 Current Status
+
+**✅ Completed:**
+- Modern React frontend with TypeScript
+- Voice recording and multilingual support
+- Responsive design with agricultural theme
+- Mock disease detection workflow
+- Admin dashboard skeleton
+- Progressive Web App foundation
+
+**🔄 In Progress:**
+- Backend API development
+- ML model integration
+- Real-time notifications
+- Market price feeds
+
+**📋 Planned:**
+- Production deployment
+- SMS/IVR integration
+- Advanced analytics
+- Mobile app packaging
+
+## 🤝 Contributing
+
+This is a Smart India Hackathon project focused on empowering small farmers with accessible AI technology.
+
+## 📄 License
+
+Built for SIH 2024 - Smart Crop Advisory for Rural Development
