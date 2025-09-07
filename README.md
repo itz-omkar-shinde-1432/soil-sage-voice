@@ -43,7 +43,7 @@ npm run build
 - 🎨 **Design System**: Earth-tone agricultural theme
 - 🔊 **Text-to-Speech**: Accessibility-focused voice output
 
-## 📁 Project Structure
+## 📁 Project Structur
 
 ```
 src/
